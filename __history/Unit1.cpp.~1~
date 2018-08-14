@@ -1,0 +1,214 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "Unit2.h"
+
+int F1_BTN_STATE = 0;
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+TForm1 *Form1;
+
+void F1_BTN_ANIMATION()
+{
+	Form1->TimerBtnRight->Enabled = true;
+	Form1->TimerBtnLeft->Enabled = true;
+
+	Form1->Btn_Continue->Enabled = false;
+	Form1->Btn_Armory->Enabled = false;
+	Form1->Btn_Exit->Enabled = false;
+	Form1->Btn_NewGame->Enabled = false;
+}
+
+void F1_RESIZE_COMPONENTS()
+{
+//Кнопки.................................
+//Continue....
+	Form1->Btn_Continue->Position->X = Form1->Width - Form1->Btn_Continue->Width - 4;
+	Form1->Btn_Continue->Position->Y = Form1->Height - Form1->Btn_Continue->Height - 54;
+
+	Form1->Label_Btn_Continue->Position->X = Form1->Btn_Continue->Position->X + Form1->Btn_Continue->Width / 2 - Form1->Label_Btn_Continue->Width / 2 + 8; //+8 - подгон
+	Form1->Label_Btn_Continue->Position->Y = Form1->Btn_Continue->Position->Y + Form1->Btn_Continue->Height / 2 - Form1->Label_Btn_Continue->Height / 2 - 2; // -2 -  подгон
+
+//Armory....
+	Form1->Btn_Armory->Position->X = Form1->Btn_Continue->Position->X - Form1->Btn_Armory->Width + 24;
+	Form1->Btn_Armory->Position->Y = Form1->Height - Form1->Btn_Armory->Height - 54;
+
+	Form1->Label_Btn_Armory->Position->X = Form1->Btn_Armory->Position->X + Form1->Btn_Armory->Width / 2 - Form1->Label_Btn_Armory->Width / 2 + 8; //+8 - подгон
+	Form1->Label_Btn_Armory->Position->Y = Form1->Btn_Armory->Position->Y + Form1->Btn_Armory->Height / 2 - Form1->Label_Btn_Armory->Height / 2 - 2; // -2 -  подгон
+
+//Exit....
+	Form1->Btn_Exit->Position->X = Form1->Btn_NewGame->Position->X + Form1->Btn_Exit->Width - 24;
+	Form1->Btn_Exit->Position->Y = Form1->Height - Form1->Btn_NewGame->Height - 54;
+
+	Form1->Label_Btn_Exit->Position->X = Form1->Btn_Exit->Position->X + Form1->Btn_Exit->Width / 2 - Form1->Label_Btn_Exit->Width / 2 + 8; //+8 - подгон
+	Form1->Label_Btn_Exit->Position->Y = Form1->Btn_Exit->Position->Y + Form1->Btn_Exit->Height / 2 - Form1->Label_Btn_Exit->Height / 2 - 2; // -2 -  подгон
+
+//NewGame....
+	Form1->Btn_NewGame->Position->X = 4;
+	Form1->Btn_NewGame->Position->Y = Form1->Height - Form1->Btn_NewGame->Height - 54;
+
+	Form1->Label_Btn_NewGame->Position->X = Form1->Btn_NewGame->Position->X + Form1->Btn_NewGame->Width / 2 - Form1->Label_Btn_NewGame->Width / 2 - 8; //-8 - подгон
+	Form1->Label_Btn_NewGame->Position->Y = Form1->Btn_NewGame->Position->Y + Form1->Btn_NewGame->Height / 2 - Form1->Label_Btn_NewGame->Height / 2 - 2; // -2 -  подгон
+}
+
+void F1_RESET()
+{
+    F1_BTN_STATE = 0;
+}
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Btn_NewGameClick(TObject *Sender)
+{
+	F1_BTN_ANIMATION();
+
+	F1_BTN_STATE = 4; //Задаем какая кнопка была нажата, что бы активировать тот или иной таймер.
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::TimerBtnRightTimer(TObject *Sender)
+{
+	if(Form1->Btn_Continue->Position->X < Form1->Width + 200 && Form1->Btn_Armory->Position->X < Form1->Width + 200)
+	{
+	//Speed x2 / x3
+		Form1->Btn_Continue->Position->X++; 	  Form1->Btn_Continue->Position->X++;
+		Form1->Label_Btn_Continue->Position->X++; Form1->Label_Btn_Continue->Position->X++; Form1->Label_Btn_Continue->Position->X++;
+
+	//Speed x4
+		Form1->Btn_Armory->Position->X++;       Form1->Btn_Armory->Position->X++;       Form1->Btn_Armory->Position->X++;       Form1->Btn_Armory->Position->X++;
+		Form1->Label_Btn_Armory->Position->X++; Form1->Label_Btn_Armory->Position->X++; Form1->Label_Btn_Armory->Position->X++; Form1->Label_Btn_Armory->Position->X++;
+
+		if(Form1->Btn_Continue->Position->X >= Form1->Width + 200 || Form1->Btn_Armory->Position->X >= Form1->Width + 200)
+		{
+			TimerBtnRight->Enabled = false;
+			TimerBtnLeft->Enabled = false;
+		}
+	}
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::FormResize(TObject *Sender)
+{
+	F1_RESIZE_COMPONENTS();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormActivate(TObject *Sender)
+{
+	F1_RESIZE_COMPONENTS();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormDeactivate(TObject *Sender)
+{
+	F1_RESIZE_COMPONENTS();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormShow(TObject *Sender)
+{
+	F1_RESIZE_COMPONENTS();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::TimerBtnLeftTimer(TObject *Sender)
+{
+	if(Form1->Btn_NewGame->Position->X > - 300 && Form1->Btn_Exit->Position->X > - 300)
+	{
+	//Speed x2 / x3
+		Form1->Btn_NewGame->Position->X--; 	     Form1->Btn_NewGame->Position->X--;       Form1->Btn_NewGame->Position->X--;
+		Form1->Label_Btn_NewGame->Position->X--; Form1->Label_Btn_NewGame->Position->X--; Form1->Label_Btn_NewGame->Position->X--;
+
+	//Speed x4
+		Form1->Btn_Exit->Position->X--;       Form1->Btn_Exit->Position->X--;       Form1->Btn_Exit->Position->X--;       Form1->Btn_Exit->Position->X--;
+		Form1->Label_Btn_Exit->Position->X--; Form1->Label_Btn_Exit->Position->X--; Form1->Label_Btn_Exit->Position->X--; Form1->Label_Btn_Exit->Position->X--;
+
+		if(Form1->Btn_NewGame->Position->X <= - 300 || Form1->Btn_Exit->Position->X <= - 300)
+		{
+			if(F1_BTN_STATE == 4) //Btn_NewGame
+			{
+				TimerNewGame->Enabled = true;
+			}
+
+			if(F1_BTN_STATE == 3) //Btn_Exit
+			{
+				TimerExit->Enabled = true;
+			}
+
+			TimerBtnRight->Enabled = false;
+			TimerBtnLeft->Enabled = false;
+		}
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::TimerNewGameTimer(TObject *Sender)
+{
+//Выключаем текущий таймер
+	TimerNewGame->Enabled = false;
+
+//Задаем 3 жизни
+	Form2->HEALTH->Text = 3;
+
+//Отображаем три жизни
+	Form2->Health1->Visible = true;
+	Form2->Health2->Visible = true;
+	Form2->Health3->Visible = true;
+
+	Form2->BtnPlayerJump->Enabled = false;
+	Form2->BtnPlayerShield->Enabled = false;
+
+	Form2->TimerGame->Enabled = true;
+
+	Form2->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Btn_ExitClick(TObject *Sender)
+{
+	F1_BTN_ANIMATION();
+
+	F1_BTN_STATE = 3; //Задаем какая кнопка была нажата, что бы активировать тот или иной таймер.
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Btn_ArmoryClick(TObject *Sender)
+{
+	F1_BTN_ANIMATION();
+	F1_BTN_STATE = 2; //Задаем какая кнопка была нажата, что бы активировать тот или иной таймер.
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Btn_ContinueClick(TObject *Sender)
+{
+	F1_BTN_ANIMATION();
+	F1_BTN_STATE = 1; //Задаем какая кнопка была нажата, что бы активировать тот или иной таймер.
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::TimerExitTimer(TObject *Sender)
+{
+	Close();
+	TimerExit->Enabled = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+          TShiftState Shift)
+{
+	if(Key == vkHardwareBack)
+	{
+		Form1->Btn_ExitClick(Sender);
+	}
+}
+//---------------------------------------------------------------------------
+

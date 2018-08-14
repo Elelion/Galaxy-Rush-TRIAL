@@ -1,0 +1,149 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit2H
+#define Unit2H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include <FMX.Ani.hpp>
+#include <FMX.Objects.hpp>
+#include <FMX.StdCtrls.hpp>
+#include <FMX.Types.hpp>
+//---------------------------------------------------------------------------
+class TForm2 : public TForm
+{
+__published:	// IDE-managed Components
+	TRectangle *Trail1;
+	TFloatAnimation *FloatAnimation1;
+	TRectangle *Trail2;
+	TFloatAnimation *FloatAnimation2;
+	TRectangle *Trail3;
+	TFloatAnimation *FloatAnimation3;
+	TRectangle *Trail4;
+	TFloatAnimation *FloatAnimation4;
+	TRectangle *Trail5;
+	TFloatAnimation *FloatAnimation5;
+	TRectangle *Trail6;
+	TFloatAnimation *FloatAnimation6;
+	TRectangle *Trail7;
+	TFloatAnimation *FloatAnimation7;
+	TRectangle *Trail8;
+	TFloatAnimation *FloatAnimation8;
+	TRectangle *Trail9;
+	TFloatAnimation *FloatAnimation9;
+	TRectangle *Trail10;
+	TFloatAnimation *FloatAnimation10;
+	TRectangle *MainSpherePlayer;
+	TFloatAnimation *FloatAnimation11;
+	TTimer *TimerTrail1Start;
+	TTimer *TimerTrail1End;
+	TTimer *TimerTrail2Start;
+	TTimer *TimerTrail2End;
+	TTimer *TimerTrail3Start;
+	TTimer *TimerTrail3End;
+	TTimer *TimerTrail4Start;
+	TTimer *TimerTrail4End;
+	TTimer *TimerTrail5Start;
+	TTimer *TimerTrail5End;
+	TTimer *TimerTrail6Start;
+	TTimer *TimerTrail6End;
+	TTimer *TimerTrail7Start;
+	TTimer *TimerTrail7End;
+	TTimer *TimerTrail8Start;
+	TTimer *TimerTrail8End;
+	TTimer *TimerTrail9Start;
+	TTimer *TimerTrail9End;
+	TTimer *TimerTrail10Start;
+	TTimer *TimerTrail10End;
+	TRectangle *SphereDown;
+	TRectangle *SphereUp;
+	TLabel *STATUS;
+	TTimer *TimerSphereUpBtn;
+	TTimer *TimerSphereDownBtn;
+	TTimer *TimerExplorer1;
+	TTimer *TimerExplorer2;
+	TTimer *TimerExplorer3;
+	TRectangle *Barrier1;
+	TTimer *TimerBarrier1Start;
+	TTimer *TimerBarrier1End;
+	TTimer *TimerFly;
+	TRectangle *Barrier2;
+	TTimer *TimerBarrier2Start;
+	TTimer *TimerBarrier2End;
+	TRectangle *Barrier3;
+	TRectangle *Barrier4;
+	TTimer *TimerBarrier3Start;
+	TTimer *TimerBarrier3End;
+	TTimer *TimerBarrier4Start;
+	TTimer *TimerBarrier4End;
+	TRectangle *Barrier5;
+	TTimer *TimerBarrier5Start;
+	TTimer *TimerBarrier5End;
+	TRectangle *Barrier6;
+	TTimer *TimerBarrier6Start;
+	TTimer *TimerBarrier6End;
+	TRectangle *Health1;
+	TRectangle *Health2;
+	TRectangle *Health3;
+	TLabel *HEALTH;
+	TTimer *TimerGameOver;
+	TTimer *TimerGame;
+	void __fastcall TimerExplorer1Timer(TObject *Sender);
+	void __fastcall TimerExplorer2Timer(TObject *Sender);
+	void __fastcall TimerExplorer3Timer(TObject *Sender);
+	void __fastcall TimerFlyTimer(TObject *Sender);
+	void __fastcall TimerBarrier1StartTimer(TObject *Sender);
+	void __fastcall TimerBarrier1EndTimer(TObject *Sender);
+	void __fastcall TimerBarrier2StartTimer(TObject *Sender);
+	void __fastcall TimerBarrier2EndTimer(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall TimerSphereUpBtnTimer(TObject *Sender);
+	void __fastcall TimerSphereDownBtnTimer(TObject *Sender);
+	void __fastcall SphereUpMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          float X, float Y);
+	void __fastcall SphereUpMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          float X, float Y);
+	void __fastcall SphereDownMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          float X, float Y);
+	void __fastcall SphereDownMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          float X, float Y);
+	void __fastcall TimerTrail1StartTimer(TObject *Sender);
+	void __fastcall TimerTrail2StartTimer(TObject *Sender);
+	void __fastcall TimerTrail3StartTimer(TObject *Sender);
+	void __fastcall TimerTrail4StartTimer(TObject *Sender);
+	void __fastcall TimerTrail5StartTimer(TObject *Sender);
+	void __fastcall TimerTrail6StartTimer(TObject *Sender);
+	void __fastcall TimerTrail7StartTimer(TObject *Sender);
+	void __fastcall TimerTrail8StartTimer(TObject *Sender);
+	void __fastcall TimerTrail9StartTimer(TObject *Sender);
+	void __fastcall TimerTrail10StartTimer(TObject *Sender);
+	void __fastcall TimerTrail1EndTimer(TObject *Sender);
+	void __fastcall TimerTrail2EndTimer(TObject *Sender);
+	void __fastcall TimerTrail3EndTimer(TObject *Sender);
+	void __fastcall TimerTrail4EndTimer(TObject *Sender);
+	void __fastcall TimerTrail5EndTimer(TObject *Sender);
+	void __fastcall TimerTrail6EndTimer(TObject *Sender);
+	void __fastcall TimerTrail7EndTimer(TObject *Sender);
+	void __fastcall TimerTrail8EndTimer(TObject *Sender);
+	void __fastcall TimerTrail9EndTimer(TObject *Sender);
+	void __fastcall TimerTrail10EndTimer(TObject *Sender);
+	void __fastcall TimerBarrier3StartTimer(TObject *Sender);
+	void __fastcall TimerBarrier3EndTimer(TObject *Sender);
+	void __fastcall TimerBarrier4StartTimer(TObject *Sender);
+	void __fastcall TimerBarrier4EndTimer(TObject *Sender);
+	void __fastcall TimerBarrier5StartTimer(TObject *Sender);
+	void __fastcall TimerBarrier5EndTimer(TObject *Sender);
+	void __fastcall FormResize(TObject *Sender);
+	void __fastcall TimerBarrier6StartTimer(TObject *Sender);
+	void __fastcall TimerBarrier6EndTimer(TObject *Sender);
+	void __fastcall TimerGameOverTimer(TObject *Sender);
+	void __fastcall TimerGameTimer(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm2(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm2 *Form2;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,25 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 455
+  ClientWidth = 856
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMobile = True
+  DesignerWidth = 856
+  DesignerHeight = 480
+  DesignerDeviceName = '5.4 FWVGA Android Phone'
+  DesignerOrientation = 3
+  DesignerOSVersion = ''
+  object Button1: TButton
+    Height = 44.000000000000000000
+    Position.X = 80.000000000000000000
+    Position.Y = 56.000000000000000000
+    TabOrder = 1
+    Text = 'Button1'
+    Width = 73.000000000000000000
+    OnClick = Button1Click
+  end
+end

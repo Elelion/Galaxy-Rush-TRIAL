@@ -1,0 +1,50 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit1H
+#define Unit1H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include <FMX.StdCtrls.hpp>
+#include <FMX.Types.hpp>
+#include <FMX.Objects.hpp>
+//---------------------------------------------------------------------------
+class TForm1 : public TForm
+{
+__published:	// IDE-managed Components
+	TImage *Fon;
+	TRectangle *Btn_Continue;
+	TRectangle *Btn_Armory;
+	TRectangle *Btn_NewGame;
+	TLabel *Label_Btn_Continue;
+	TLabel *Label_Btn_Armory;
+	TLabel *Label_Btn_NewGame;
+	TTimer *TimerBtnLeft;
+	TTimer *TimerBtnRight;
+	TRectangle *Btn_Exit;
+	TLabel *Label_Btn_Exit;
+	TTimer *TimerNewGame;
+	TTimer *TimerExit;
+	void __fastcall Btn_NewGameClick(TObject *Sender);
+	void __fastcall TimerBtnRightTimer(TObject *Sender);
+	void __fastcall FormResize(TObject *Sender);
+	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall FormDeactivate(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
+	void __fastcall TimerBtnLeftTimer(TObject *Sender);
+	void __fastcall TimerNewGameTimer(TObject *Sender);
+	void __fastcall Btn_ExitClick(TObject *Sender);
+	void __fastcall Btn_ArmoryClick(TObject *Sender);
+	void __fastcall Btn_ContinueClick(TObject *Sender);
+	void __fastcall TimerExitTimer(TObject *Sender);
+	void __fastcall FormKeyUp(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+          TShiftState Shift);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif
